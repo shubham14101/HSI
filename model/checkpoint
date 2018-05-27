@@ -1,0 +1,3 @@
+model_checkpoint_path: "D:/HSI/model/model.ckpt"
+all_model_checkpoint_paths: "/tmp/model.ckpt"
+all_model_checkpoint_paths: "D:/HSI/model/model.ckpt"

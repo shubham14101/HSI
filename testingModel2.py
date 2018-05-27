@@ -44,13 +44,13 @@ out = tf.nn.bias_add(conv, bias1)
 conv1_1 = tf.nn.relu(out)
 
 
-Filter2 = tf.Variable(tf.truncated_normal([3,3,128, 128], dtype=tf.float32,stddev=1e-1),trainable=True)
+Filter2 = tf.Variable(tf.truncated_normal([1,1,128, 128], dtype=tf.float32,stddev=1e-1),trainable=True)
 conv = tf.nn.conv2d(conv1_1,Filter2, [1, 1, 1, 1], padding='SAME')
 bias2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 out = tf.nn.bias_add(conv, bias2)
 conv1_2 = tf.nn.relu(out)
 
-Filter3 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+Filter3 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 conv = tf.nn.conv2d(conv1_2,Filter3, [1, 1, 1, 1], padding='SAME')
 bias3 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 out = tf.nn.bias_add(conv, bias3)
@@ -60,13 +60,13 @@ res1 = conv1_3 + conv1_1
 res1 = tf.nn.relu(res1)
 
 
-Filter4 = tf.Variable(tf.truncated_normal([3,3,128, 128], dtype=tf.float32,stddev=1e-1),trainable=True)
+Filter4 = tf.Variable(tf.truncated_normal([1,1,128, 128], dtype=tf.float32,stddev=1e-1),trainable=True)
 conv = tf.nn.conv2d(res1,Filter4, [1, 1, 1, 1], padding='SAME')
 bias4 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 out = tf.nn.bias_add(conv, bias4)
 conv2_1 = tf.nn.relu(out)
 
-Filter5 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+Filter5 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 conv = tf.nn.conv2d(conv2_1,Filter5, [1, 1, 1, 1], padding='SAME')
 bias5 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 out = tf.nn.bias_add(conv, bias5)
@@ -76,13 +76,13 @@ conv2_2 = out
 res2 = conv1_1 + conv1_3 + conv2_2
 res2 = tf.nn.relu(res2)
 
-Filter6 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+Filter6 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 conv = tf.nn.conv2d(res2,Filter6, [1, 1, 1, 1], padding='SAME')
 bias6 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 out = tf.nn.bias_add(conv, bias6)
 conv3_1 = tf.nn.relu(out)
 
-Filter7 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+Filter7 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 conv = tf.nn.conv2d(conv3_1,Filter7, [1, 1, 1, 1], padding='SAME')
 bias7 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 out = tf.nn.bias_add(conv, bias7)
@@ -91,26 +91,26 @@ conv3_2 = out
 res3 =  conv1_1 + conv1_3 + conv2_2 + conv3_2
 res3 = tf.nn.relu(res3)
 
-Filter8 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+Filter8 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 conv = tf.nn.conv2d(res3,Filter8, [1, 1, 1, 1], padding='SAME')
 bias8 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 out = tf.nn.bias_add(conv, bias8)
 conv4_1 = tf.nn.relu(out)
 
-Filter9 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+Filter9 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 conv = tf.nn.conv2d(conv4_1,Filter9, [1, 1, 1, 1], padding='SAME')
 bias9 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 out = tf.nn.bias_add(conv, bias9)
 conv4_2 = tf.nn.relu(out)
 ##### side outputs
 #1
-sideFilter1_1 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter1_1 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias1_1 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv1_1out = tf.nn.conv2d(conv1_2,sideFilter1_1, [1, 1, 1, 1], padding='SAME')
 conv1_1out = tf.nn.bias_add(conv1_1out,sideBias1_1)
 conv1_1out = tf.nn.relu(conv1_1out)
 
-sideFilter1_2 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter1_2 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias1_2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv1_2out = tf.nn.conv2d(conv1_1out,sideFilter1_2, [1, 1, 1, 1], padding='SAME')
 conv1_2out = tf.nn.bias_add(conv1_2out,sideBias1_2)
@@ -124,7 +124,7 @@ resultS1 = tf.nn.bias_add(tf.matmul(flat, fcS1w), fcS1b)
 ansS1 = tf.nn.softmax(resultS1)
 #2
 
-sideFilter2_1 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter2_1 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias2_1 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv2_1out = tf.nn.conv2d(tf.nn.relu(conv1_3),sideFilter2_1, [1, 1, 1, 1], padding='SAME')
 conv2_1out = tf.nn.bias_add(conv2_1out,sideBias2_1)
@@ -132,7 +132,7 @@ conv2_1out = tf.nn.bias_add(conv2_1out,sideBias2_1)
 resS2 = conv1_1out + conv2_1out
 resS2 = tf.nn.relu(resS2)
 
-sideFilter2_2 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter2_2 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias2_2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv2_2out = tf.nn.conv2d(resS2,sideFilter2_2, [1, 1, 1, 1], padding='SAME')
 conv2_2out = tf.nn.bias_add(conv2_2out,sideBias2_2)
@@ -146,7 +146,7 @@ resultS2 = tf.nn.bias_add(tf.matmul(flat, fcS2w), fcS2b)
 ansS2 = tf.nn.softmax(resultS2)
 #3
 
-sideFilter3_1 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter3_1 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias3_1 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv3_1out = tf.nn.conv2d(conv2_1,sideFilter3_1, [1, 1, 1, 1], padding='SAME')
 conv3_1out = tf.nn.bias_add(conv3_1out,sideBias3_1)
@@ -154,7 +154,7 @@ conv3_1out = tf.nn.bias_add(conv3_1out,sideBias3_1)
 resS3 = conv1_1out + conv2_1out + conv3_1out
 resS3 = tf.nn.relu(resS3)
 
-sideFilter3_2 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter3_2 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias3_2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv3_2out = tf.nn.conv2d(resS3,sideFilter3_2, [1, 1, 1, 1], padding='SAME')
 conv3_2out = tf.nn.bias_add(conv3_2out,sideBias3_2)
@@ -168,7 +168,7 @@ resultS3 = tf.nn.bias_add(tf.matmul(flat, fcS3w), fcS3b)
 ansS3 = tf.nn.softmax(resultS3)
 
 #4
-sideFilter4_1 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter4_1 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias4_1 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv4_1out = tf.nn.conv2d(tf.nn.relu(conv2_2),sideFilter4_1, [1, 1, 1, 1], padding='SAME')
 conv4_1out = tf.nn.bias_add(conv4_1out,sideBias4_1)
@@ -176,7 +176,7 @@ conv4_1out = tf.nn.bias_add(conv4_1out,sideBias4_1)
 resS4 = conv1_1out + conv2_1out +conv3_1out + conv4_1out
 resS4 = tf.nn.relu(resS4)
 
-sideFilter4_2 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter4_2 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias4_2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv4_2out = tf.nn.conv2d(resS4,sideFilter4_2, [1, 1, 1, 1], padding='SAME')
 conv4_2out = tf.nn.bias_add(conv4_2out,sideBias4_2)
@@ -189,7 +189,7 @@ flat = tf.reshape(conv4_2out, [-1, shape])
 resultS4 = tf.nn.bias_add(tf.matmul(flat, fcS4w), fcS4b)
 ansS4 = tf.nn.softmax(resultS4)
 #5
-sideFilter5_1 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter5_1 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias5_1 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv5_1out = tf.nn.conv2d(conv3_1,sideFilter5_1, [1, 1, 1, 1], padding='SAME')
 conv5_1out = tf.nn.bias_add(conv5_1out,sideBias5_1)
@@ -197,7 +197,7 @@ conv5_1out = tf.nn.bias_add(conv5_1out,sideBias5_1)
 resS5 = conv1_1out + conv2_1out + conv3_1out + conv4_1out + conv5_1out
 resS5 = tf.nn.relu(resS5)
 
-sideFilter5_2 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter5_2 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias5_2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv5_2out = tf.nn.conv2d(resS5,sideFilter5_2, [1, 1, 1, 1], padding='SAME')
 conv5_2out = tf.nn.bias_add(conv5_2out,sideBias5_2)
@@ -211,7 +211,7 @@ resultS5 = tf.nn.bias_add(tf.matmul(flat, fcS5w), fcS5b)
 ansS5 = tf.nn.softmax(resultS5)
 
 #6
-sideFilter6_1 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter6_1 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias6_1 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv6_1out = tf.nn.conv2d(conv3_2,sideFilter6_1, [1, 1, 1, 1], padding='SAME')
 conv6_1out = tf.nn.bias_add(conv6_1out,sideBias6_1)
@@ -219,7 +219,7 @@ conv6_1out = tf.nn.bias_add(conv6_1out,sideBias6_1)
 resS6 = conv1_1out + conv2_1out + conv3_1out + conv4_1out + conv5_1out + conv6_1out
 resS6 = tf.nn.relu(resS6)
 
-sideFilter6_2 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter6_2 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias6_2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv6_2out = tf.nn.conv2d(resS6,sideFilter6_2, [1, 1, 1, 1], padding='SAME')
 conv6_2out = tf.nn.bias_add(conv6_2out,sideBias6_2)
@@ -231,8 +231,9 @@ fcS6b = tf.Variable(tf.constant(1.0, shape=[9], dtype=tf.float32),trainable=True
 flat = tf.reshape(conv6_2out, [-1, shape])
 resultS6 = tf.nn.bias_add(tf.matmul(flat, fcS6w), fcS6b)
 ansS6 = tf.nn.softmax(resultS6)
+'''
 #7
-sideFilter7_1 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter7_1 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias7_1 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv7_1out = tf.nn.conv2d(conv4_1,sideFilter7_1, [1, 1, 1, 1], padding='SAME')
 conv7_1out = tf.nn.bias_add(conv7_1out,sideBias7_1)
@@ -240,7 +241,7 @@ conv7_1out = tf.nn.bias_add(conv7_1out,sideBias7_1)
 resS7 = conv1_1out + conv2_1out + conv3_1out + conv4_1out + conv5_1out + conv6_1out + conv7_1out
 resS7 = tf.nn.relu(resS7)
 
-sideFilter7_2 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter7_2 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias7_2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv7_2out = tf.nn.conv2d(resS7,sideFilter7_2, [1, 1, 1, 1], padding='SAME')
 conv7_2out = tf.nn.bias_add(conv7_2out,sideBias7_2)
@@ -253,7 +254,7 @@ flat = tf.reshape(conv7_2out, [-1, shape])
 resultS7 = tf.nn.bias_add(tf.matmul(flat, fcS7w), fcS7b)
 ansS7 = tf.nn.softmax(resultS7)
 #8
-sideFilter8_1 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter8_1 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias8_1 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv8_1out = tf.nn.conv2d(conv4_2,sideFilter8_1, [1, 1, 1, 1], padding='SAME')
 conv8_1out = tf.nn.bias_add(conv8_1out,sideBias8_1)
@@ -261,7 +262,7 @@ conv8_1out = tf.nn.bias_add(conv8_1out,sideBias8_1)
 resS8 = conv1_1out + conv2_1out + conv3_1out + conv4_1out + conv5_1out + conv6_1out + conv7_1out + conv8_1out
 resS8 = tf.nn.relu(resS8)
 
-sideFilter8_2 = tf.Variable(tf.truncated_normal([3,3,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
+sideFilter8_2 = tf.Variable(tf.truncated_normal([1,1,128,128], dtype=tf.float32,stddev=1e-1),trainable=True)
 sideBias8_2 = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),trainable=True)
 conv8_2out = tf.nn.conv2d(resS8,sideFilter8_2, [1, 1, 1, 1], padding='SAME')
 conv8_2out = tf.nn.bias_add(conv8_2out,sideBias8_2)
@@ -273,13 +274,13 @@ fcS8b = tf.Variable(tf.constant(1.0, shape=[9], dtype=tf.float32),trainable=True
 flat = tf.reshape(conv8_2out, [-1, shape])
 resultS8 = tf.nn.bias_add(tf.matmul(flat, fcS8w), fcS8b)
 ansS8 = tf.nn.softmax(resultS8)
+'''
 
-
-resultT = (resultS1 + resultS2 + resultS3+ resultS4 + resultS5 + resultS6 + resultS7 + resultS8)/8
-ansT = (ansS1 + ansS2 + ansS3 + ansS4 + ansS5 + ansS6 + ansS7 + ansS8)/8
-
-loss = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS3)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS1)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS2)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS4)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS5)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS6)) +tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS7))+tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS8))
-optimizer = tf.train.AdamOptimizer(learning_rate=1e-3).minimize(loss)
+resultT = (resultS1 + resultS2 + resultS3+ resultS4 + resultS5 + resultS6 )/6#+ resultS7 + resultS8
+ansT = (ansS1 + ansS2 + ansS3 + ansS4 + ansS5 + ansS6 )/6#+ ansS7 + ansS8
+#lossF = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultT))+tf.reduce_sum(tf.sqrt(tf.reduce_sum(tf.square(ground_truth - ansT), reduction_indices=[1])))#tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultT))+
+loss =  tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultT))+tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS3)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS1)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS2)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS4)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS5)) + tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS6))# +tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS7))+tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(labels = ground_truth,logits = resultS8))
+optimizer = tf.train.AdamOptimizer(learning_rate=0.0005).minimize(loss)
       
 
 
@@ -291,8 +292,9 @@ data = data['indian_pines_corrected']
 data = np.pad(data,((2,2), (2,2),(0,0)),mode='constant', constant_values = 0)
 label = label['indian_pines_gt']
 label = np.pad(label,((2,2), (2,2)),mode='constant', constant_values = 0)
-
-
+#for band in range(200):
+#	data[:,:,band] = (data[:,:,band]-np.min(data[:,:,band]))/(np.max(data[:,:,band])-np.min(data[:,:,band]))
+'''
 class1 = np.array(np.where(label==1))
 class2 = np.array(np.where(label==2))
 class3 = np.array(np.where(label==3))
@@ -403,7 +405,7 @@ print(testing_data_index.shape)
 
 np.savetxt('trainingIndianPines.txt', training_data_index)
 np.savetxt('testingIndianPines.txt', testing_data_index)
-
+'''
 training_data_index = np.loadtxt('trainingIndianPines.txt')
 testing_data_index = np.loadtxt('testingIndianPines.txt')
 training_data_index = training_data_index.astype(int)
@@ -417,11 +419,11 @@ with tf.Session(config=config) as sess:
 	init = tf.global_variables_initializer()
 	saver = tf.train.Saver()
 	sess.run(init)
-	#try:
-	#	saver.restore(sess, "/tmp/model.ckpt")
-	#except:
-	#	print("no model")
-	for k in range(1500):
+	try:
+		saver.restore(sess, "/tmp/model.ckpt")
+	except:
+		print("no model")
+	for k in range(47):
 		lossT = 0
 		acc = 0
 		acc2= 0
@@ -450,7 +452,6 @@ with tf.Session(config=config) as sess:
 			encoding = np.array([encoding])
 			for j in range(1,1800):
 				tempINP = data[training_data_index[j,0]-2:training_data_index[j,0]+3,training_data_index[j,1]-2:training_data_index[j,1]+3,:]
-				tempINP = np.array([tempINP])
 				tempECD = np.zeros(9)
 				if(label[training_data_index[(j),0],training_data_index[(j),1]]==2):
 					tempECD[0] = 1
@@ -471,10 +472,16 @@ with tf.Session(config=config) as sess:
 				if(label[training_data_index[(j),0],training_data_index[(j),1]]==14):
 					tempECD[8] = 1
 				#print(tempECD)
-				tempECD = np.array([tempECD])
-				inp = np.append(inp,tempINP,axis = 0)
-				encoding = np.append(encoding,tempECD,axis = 0)
-			opt,lossP,ansP,final= sess.run([optimizer,loss,ansS8,ansT],feed_dict={input_patch:inp,ground_truth:encoding})
+				inp = np.append(inp,np.array([tempINP]),axis = 0)
+				encoding = np.append(encoding,np.array([tempECD]),axis = 0)
+				inp = np.append(inp,np.array([np.flipud(tempINP)]),axis = 0)
+				encoding = np.append(encoding,np.array([tempECD]),axis = 0)
+				inp = np.append(inp,np.array([np.fliplr(tempINP)]),axis = 0)
+				encoding = np.append(encoding,np.array([tempECD]),axis = 0)
+				inp = np.append(inp,np.array([np.rot90(tempINP,2)]),axis = 0)
+				encoding = np.append(encoding,np.array([tempECD]),axis = 0)
+			print(inp.shape)
+			opt,lossP,ansP,final= sess.run([optimizer,loss,ansS6,ansT],feed_dict={input_patch:inp,ground_truth:encoding})
 			lossT = lossT + lossP
 		#for i in range(1030):
 		#	inp = data[training_data_index[(i),0]-2:training_data_index[(i),0]+3,training_data_index[(i),1]-2:training_data_index[(i),1]+3,:]
@@ -490,17 +497,19 @@ with tf.Session(config=config) as sess:
 		#	if(np.argmax(final[0,:])==np.argmax(encoding[0,:])):
 		#		acc2 = acc2 + 1
 			print(lossT)
-			for p in range(1800):
+			for p in range(7197):
 				if(np.argmax(ansP[p,:])==np.argmax(encoding[p,:])):
 					acc = acc + 1
 				if(np.argmax(final[p,:])==np.argmax(encoding[p,:])):
 					acc2 = acc2 + 1
-			print(acc/1800,accP/7434)
-			print(acc2/1800,accP2/7434)
-			if(k%15 == 0):
+			print(acc/7197,accP/7434)
+			print(acc2/7197,accP2/7434)
+			if(k%5 == 0):
 				save_path = saver.save(sess, "/tmp/model.ckpt")
+				save_path2 = saver.save(sess,"D:/HSI/model/model.ckpt")
 				accP = 0
 				accP2 = 0
+				classwise = np.zeros(9)
 				#for l in range(1):
 				#	inp = data[testing_data_index[0,0]-4:testing_data_index[0,0]+5,testing_data_index[0,1]-4:testing_data_index[0,1]+5,:]
 				#	inp = np.array([inp])
@@ -545,8 +554,27 @@ with tf.Session(config=config) as sess:
 					if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==14):
 						encoding[8] = 1
 					encoding = np.array([encoding])
-					ansPred,finalPred= sess.run([ansS8,ansT],feed_dict={input_patch:inp,ground_truth:encoding})
+					ansPred,finalPred= sess.run([ansS6,ansT],feed_dict={input_patch:inp,ground_truth:encoding})
 					if(np.argmax(ansPred)==np.argmax(encoding)):
 						accP = accP + 1
 					if(np.argmax(finalPred)==np.argmax(encoding)):
 						accP2 = accP2 + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==2):
+							classwise[0] = classwise[0] + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==3):
+							classwise[1] = classwise[1] + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==5):
+							classwise[2] = classwise[2] + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==6):
+							classwise[3] = classwise[3] + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==8):
+							classwise[4] = classwise[4] + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==10):
+							classwise[5] = classwise[5] + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==11):
+							classwise[6] = classwise[6] + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==12):
+							classwise[7] = classwise[7] + 1
+						if(label[testing_data_index[(l),0],testing_data_index[(l),1]]==14):
+							classwise[8] = classwise[8] + 1
+						np.savetxt('IndianPinesClass.txt',classwise)
